@@ -27,6 +27,7 @@ kalman = 2<br>
 <br>
 Actions:<br>
 -----------------<br>
+<a href="/">Refresh</a><br>
 <a href="/release">Release Token</a><br>
 <a href="/chris">Lock for Chris</a><br>
 <a href="/andreas">Lock for Andreas</a><br>
