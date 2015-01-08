@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"runtime"
 	"sync"
 )
 
@@ -119,6 +120,7 @@ func lockForKalman(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	runtime.GOMAXPROCS(4)
 	http.HandleFunc("/", root)
 	http.HandleFunc("/release", release)
 	http.HandleFunc("/chris", lockForChris)
