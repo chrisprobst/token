@@ -120,7 +120,7 @@ func lockForKalman(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	runtime.GOMAXPROCS(4)
+	runtime.GOMAXPROCS(runtime.NumCPU())
 	http.HandleFunc("/", root)
 	http.HandleFunc("/release", release)
 	http.HandleFunc("/chris", lockForChris)
