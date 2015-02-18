@@ -57,15 +57,12 @@ func root(w http.ResponseWriter, r *http.Request) {
 func release(w http.ResponseWriter, r *http.Request) {
 	m.Lock()
 	defer m.Unlock()
-	w.Header().Set("Content-Type", "text/html")
 
 	if token != -1 {
 		token = -1
 	}
 
-	fmt.Fprintln(w, header)
-	fmt.Fprintf(w, "Token Owner: %d", token)
-	fmt.Fprintln(w, footer)
+	http.Redirect(w, r, "/", http.StatusFound);
 }
 
 func lockForChris(w http.ResponseWriter, r *http.Request) {
@@ -126,5 +123,5 @@ func main() {
 	http.HandleFunc("/chris", lockForChris)
 	http.HandleFunc("/andreas", lockForAndreas)
 	http.HandleFunc("/kalman", lockForKalman)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8669", nil)
 }
